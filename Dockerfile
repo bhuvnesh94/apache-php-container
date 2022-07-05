@@ -8,5 +8,7 @@ RUN apt install apache2 -y && \
     echo "ServerName localhost" >> /etc/apache2/apache2.conf
 ENV TZ=Etc/UTC
 RUN  apt install php -y
+RUN rm -rf /var/www/html/*
+COPY index.php /var/www/html/index.php
 EXPOSE 80
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
